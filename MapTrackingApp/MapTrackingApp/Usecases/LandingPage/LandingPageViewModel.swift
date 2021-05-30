@@ -14,10 +14,6 @@ class LandingPageViewModel {
     
     init(mapAPI: MapAPI) {
         self.mapAPI = mapAPI
-        
-//        downloadScooterLocations(onDownload: {
-//            print(self.currentVehicles.count)
-//        })
     }
     
     func downloadScooterLocations(onDownload: (() -> Void)?) {
