@@ -98,23 +98,7 @@ extension LandingPageVC: CLLocationManagerDelegate {
 }
 
 extension LandingPageVC: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation ) -> MKAnnotationView? {
-        guard let annotation = annotation as? Vehicle else {  return nil }
-        let identifier = "Vehicle"
-        var view: MKMarkerAnnotationView
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        }
-        return view
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let vehicle = view.annotation as? Vehicle else { return }
         
         let vehicleView: VehicleView = VehicleView()
@@ -132,7 +116,6 @@ extension LandingPageVC: MKMapViewDelegate {
         vehicleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         vehicleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         vehicleView.heightAnchor.constraint(equalToConstant: 170).isActive = true
-        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
