@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  MapTrackingApp
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -16,12 +9,12 @@ class LandingPageVC: UIViewController {
     lazy var rootView: LandingPageView = {
         return LandingPageView()
     }()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
@@ -36,11 +29,19 @@ class LandingPageVC: UIViewController {
         view.addSubview(rootView)
         
         rootView.mapView.delegate = self
+        rootView.onUserLocationButtonClicked = {
+            self.locateUser()
+        }
         
         viewModel = LandingPageViewModel(mapAPI: MapAPI())
-        viewModel?.downloadScooterLocations(onDownload: { self.invalidate() })
+        viewModel?.downloadScooterLocations(
+            onDownload: {
+                self.invalidate()
+                self.locateUser()
+            }
+        )
         
-        rootView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        rootView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         rootView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         rootView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         rootView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -56,6 +57,23 @@ class LandingPageVC: UIViewController {
                     vehicleInfo: vehicle)
             )
         }
+    }
+    
+    func locateUser() {
+        var center = CLLocationCoordinate2D(
+            latitude: self.rootView.mapView.userLocation.coordinate.latitude,
+            longitude: self.rootView.mapView.userLocation.coordinate.longitude
+        )
+        
+        if center.latitude == 0.0 && center.longitude == 0.0 { // For Simulator testing purposes (relocalises on Alexanderplatz, Berlin, Germany)
+            center = CLLocationCoordinate2D(
+                latitude: 52.521473,
+                longitude: 13.414363
+            )
+        }
+        
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.rootView.mapView.setRegion(region, animated: true)
     }
 }
 

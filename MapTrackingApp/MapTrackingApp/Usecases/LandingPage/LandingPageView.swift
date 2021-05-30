@@ -1,14 +1,9 @@
-//
-//  LandingPageView.swift
-//  MapTrackingApp
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import UIKit
 import MapKit
 
 class LandingPageView: UIView {
+    var onUserLocationButtonClicked: (() -> Void)?
+    
     lazy var mapView: MKMapView = {
         let view: MKMapView = MKMapView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +37,7 @@ class LandingPageView: UIView {
         addSubview(userLocationButton)
         
         //MARK: Layout
-        mapView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -54,21 +49,7 @@ class LandingPageView: UIView {
     }
     
     @objc func userLocationButtonClicked() {
-        var center = CLLocationCoordinate2D(
-            latitude: mapView.userLocation.coordinate.latitude,
-            longitude: mapView.userLocation.coordinate.longitude
-        )
-        
-        if center.latitude == 0.0 && center.longitude == 0.0 { // For Simulator testing purposes (relocalises on Alexanderplatz, Berlin, Germany)
-            center = CLLocationCoordinate2D(
-                latitude: 52.521473,
-                longitude: 13.414363
-            )
-        }
-        
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        mapView.setRegion(region, animated: true)
-        print(center)
+        onUserLocationButtonClicked?()
     }
     
     required init?(coder: NSCoder) {
