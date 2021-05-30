@@ -31,11 +31,31 @@ class MapTrackingAppTests: XCTestCase {
             onError: {_ in}
         )
     }
+    
+    func testFirstResult() {
+        sut.fetchMapRequest(
+            onSuccess: { result in
+                if let first = result.data.current.first {
+                    XCTAssertEqual(first.id, "6348dfa0-1b20-40ed-98e9-fe9e232b6105")
+                    XCTAssertEqual(first.battery, 91)
+                    XCTAssertEqual(first.fleetbirdID, 118160)
+                    XCTAssertEqual(first.hardwareID, "868446031763952")
+                    XCTAssertEqual(first.latitude, 52.506731)
+                    XCTAssertEqual(first.longitude, 13.289618)
+                    XCTAssertEqual(first.model, .ab)
+                    XCTAssertEqual(first.resolution, .claimed)
+                    XCTAssertEqual(first.resolvedBy?.rawValue, "5VRiXTOvRWbWfAlIKDv10HrE8LJ2")
+                    XCTAssertEqual(first.resolvedAt, "2019-10-10T06:35:21.153Z")
+                    XCTAssertEqual(first.state, .active)
+                    XCTAssertEqual(first.vehicleID, "8ece0495-bef0-4eac-a58e-dede2bf975a3")
+                }
+            },
+            onError:{ _ in } )
+    }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
+    func testPerformanceDataDownload() throws {
         self.measure {
-            // Put the code you want to measure the time of here.
+            sut.fetchMapRequest(onSuccess: {_ in}, onError: {_ in})
         }
     }
 
