@@ -83,8 +83,12 @@ class MapTrackingAppTests: XCTestCase {
         
         vcUnderTest.locateUser()
         
+        
         XCTAssertEqual(vcUnderTest.rootView.mapView.userLocation.coordinate.latitude, 0.0) //happens because of simulator issues
         XCTAssertEqual(vcUnderTest.rootView.mapView.userLocation.coordinate.longitude, 0.0) // //happens because of simulator issues
+        
+        XCTAssertEqual(vcUnderTest.rootView.mapView.userLocation.coordinate.latitude, vcUnderTest.rootView.mapView.camera.centerCoordinate.latitude)
+        XCTAssertEqual(vcUnderTest.rootView.mapView.userLocation.coordinate.longitude, vcUnderTest.rootView.mapView.camera.centerCoordinate.longitude)
     }
     
     //MARK: - Test ViewModel
