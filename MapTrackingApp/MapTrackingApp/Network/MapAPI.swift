@@ -17,7 +17,7 @@ class MapAPI {
             if let decodedResponse = try? JSONDecoder().decode(MapResults.self, from: jsonData) {
                 onSuccess?(decodedResponse)
             } else {
-                print("Error: \(String(describing: error))")
+                print(">>> Error: \(String(describing: error))")
                 onError?(error)
             }
         }

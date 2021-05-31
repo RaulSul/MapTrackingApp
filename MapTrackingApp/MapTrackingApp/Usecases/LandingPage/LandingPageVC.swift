@@ -39,6 +39,14 @@ class LandingPageVC: UIViewController {
             onDownload: {
                 self.invalidate()
                 self.locateUser()
+            },
+            onDownloadFail: {
+                
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Unable to download locations", message: "We are unable to download the locations of the scooters. Please try again later.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         )
         
