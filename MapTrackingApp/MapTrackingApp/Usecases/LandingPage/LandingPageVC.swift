@@ -29,6 +29,7 @@ class LandingPageVC: UIViewController {
         view.addSubview(rootView)
         
         rootView.mapView.delegate = self
+        rootView.mapView.register(VehicleAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         rootView.onUserLocationButtonClicked = {
             self.locateUser()
         }

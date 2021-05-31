@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  MapTrackingApp
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43DCC872664DBD40070B774 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43DCC862664DBD30070B774 /* VehicleAnnotationView.swift */; };
 		C4A82F422662595D00899915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A82F412662595C00899915 /* AppDelegate.swift */; };
 		C4A82F442662595D00899915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A82F432662595D00899915 /* SceneDelegate.swift */; };
 		C4A82F462662595D00899915 /* LandingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A82F452662595D00899915 /* LandingPageVC.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C43DCC862664DBD30070B774 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		C490EACB2662B4F700C309E3 /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Berlin.gpx; path = ../Assets/Berlin.gpx; sourceTree = "<group>"; };
 		C490EACC2662B55D00C309E3 /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Berlin.gpx; path = ../Assets/Berlin.gpx; sourceTree = "<group>"; };
 		C4A82F3E2662595C00899915 /* MapTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				C4A82F7C2662810E00899915 /* Vehicle.swift */,
+				C43DCC862664DBD30070B774 /* VehicleAnnotationView.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				C4A82F422662595D00899915 /* AppDelegate.swift in Sources */,
 				C4A82F7426625A2000899915 /* LandingPageView.swift in Sources */,
 				C4A82F7B26625A9700899915 /* MapAPI.swift in Sources */,
+				C43DCC872664DBD40070B774 /* VehicleAnnotationView.swift in Sources */,
 				C4A82F7626625A2E00899915 /* LandingPageViewModel.swift in Sources */,
 				C4A82F442662595D00899915 /* SceneDelegate.swift in Sources */,
 				C4A82F72266259C700899915 /* MapResults.swift in Sources */,

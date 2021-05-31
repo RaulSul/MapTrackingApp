@@ -1,10 +1,3 @@
-//
-//  MapTrackingAppTests.swift
-//  MapTrackingAppTests
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import XCTest
 import MapKit
 @testable import MapTrackingApp

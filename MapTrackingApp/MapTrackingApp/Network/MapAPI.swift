@@ -1,18 +1,6 @@
-//
-//  MapAPI.swift
-//  MapTrackingApp
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import Foundation
-
-
 class MapAPI {
-    
-    init() {
-        
-    }
+    init() { }
     
     func fetchMapRequest(onSuccess: ((MapResults) -> Void)?, onError: ((Error?) -> Void)?)  {
         let string = "https://api.jsonbin.io/b/5fa8ff8dbd01877eecdb898f"

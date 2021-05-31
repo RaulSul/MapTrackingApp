@@ -1,10 +1,3 @@
-//
-//  LandingPageViewModel.swift
-//  MapTrackingApp
-//
-//  Created by Raul Sulaimanov on 29.05.21.
-//
-
 import Foundation
 
 class LandingPageViewModel {
